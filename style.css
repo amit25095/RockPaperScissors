@@ -9,6 +9,7 @@ body {
 .main-content.main-title {
   font-size: 3em;
   margin-bottom: 0;
+  font-weight: 700;
 }
 
 .main-content {
@@ -33,4 +34,16 @@ body {
 
 .emoji {
   font-size: 3em;
+}
+
+.red {
+  color: #e74c3c;
+}
+
+.blue {
+  color: #2980b9;
+}
+
+.green {
+  color: #2ecc71;
 }
