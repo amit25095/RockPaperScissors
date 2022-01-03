@@ -1,62 +1,97 @@
-const CHOICES = ['Rock', 'Scissors', 'Paper'];
+const CHOICES = ['👊🏼', '✌🏼', '✋🏼'];
 const COMPUTER_WIN = 0;
 const PLAYER_WIN = 1;
 const TIE = 3;
+
+let playerScore = computerScore = 0;
 
 function computerPlay() {
     const randomChoice = Math.floor(Math.random() * CHOICES.length);
     return CHOICES[randomChoice];
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerIndex = CHOICES.indexOf(playerSelection[0].toUpperCase() + playerSelection.slice(1));
-    computerIndex = CHOICES.indexOf(computerSelection[0].toUpperCase() + computerSelection.slice(1));
+function updateScore() {
+    const userScoreDisplay = document.querySelector('.user-score');
+    const computerScoreDisplay = document.querySelector('.computer-score');
 
-    let winner = TIE;
+    let leader = computerScore > playerScore ? computerScoreDisplay : userScoreDisplay;
+    let loser = computerScore > playerScore ? userScoreDisplay : computerScoreDisplay;
 
-    if (playerIndex == -1)
-        playerIndex = 0;
+    if (computerScore === playerScore) {
+        leader = null;
+        loser = null;
+
+        userScoreDisplay.classList.remove('green');
+        userScoreDisplay.classList.add('red');
+
+        computerScoreDisplay.classList.remove('green');
+        computerScoreDisplay.classList.add('red');
+    }
+
+    userScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+
+    if (leader && loser) {
+        leader.classList.remove('red');
+        leader.classList.add('green');
+
+        loser.classList.remove('green');
+        loser.classList.add('red');
+    }
+}
+
+function playRound(e) {
+    const computerChoice = document.querySelector('.comp-choice');
+    const message = document.querySelector('.message');
+
+    playerIndex = CHOICES.indexOf(this.childNodes[1].textContent);
+    computerIndex = CHOICES.indexOf(computerPlay());
+
+    computerChoice.lastChild.textContent = CHOICES[computerIndex];
+    computerChoice.style.display = 'block';
 
     if (playerIndex === computerIndex) {
-        console.log("It's a tie!");
-        winner = TIE;
+        message.textContent = 'Tie!';
     }
 
     else if ((playerIndex + 1) % CHOICES.length === computerIndex) {
-        console.log(`You Won! ${CHOICES[playerIndex]} beats ${CHOICES[computerIndex]}`);
-        winner = PLAYER_WIN;
+        playerScore++;
+        message.textContent = 'Good Job! you won the round!';
     }
 
     else {
-        console.log(`You Lose! ${CHOICES[computerIndex]} beats ${CHOICES[playerIndex]}`);
-        winner = COMPUTER_WIN;
+        computerScore++;
+        message.textContent = 'You lost the round, so sad :(';
     }
 
-    return winner;
+    updateScore();
+    checkEnd();
 }
 
-// function game() {
-//     let computerPoints = playerPoints = 0;
+function checkEnd() {
+    if (computerScore === 5 || playerScore === 5) {
+        const message = document.querySelector('.message');
 
-//     for (let i = 0; i < 5; i++) {
-//         // const playerChoice = prompt("Enter choice (rock, paper, scissors)");
-//         const res = playRound(playerChoice, computerPlay());
+        document.querySelectorAll('.selection').forEach(sel => sel.removeEventListener('click', playRound));
+        document.querySelectorAll('.selection').forEach(sel => sel.style.cursor = 'default');
 
-//         if (res == COMPUTER_WIN)
-//             computerPoints++;
+        if (computerScore > playerScore) {
+            message.textContent = 'You lost the game! maybe next time...';
+            message.classList.add('red');
+        }
 
-//         else if (res == PLAYER_WIN)
-//             playerPoints++;
-//     }
+        else if (computerScore < playerScore) {
+            message.textContent = 'You won the game! congratulations!';
+            message.classList.add('green');
+        }
 
-//     if (computerPoints > playerPoints)
-//         console.log("You lost the game! maybe next time...");
+        else {
+            message.textContent = 'It\'s a tie! GG for both';
+            message.classList.add('blue');
+        }
+    }
 
-//     else if (computerPoints < playerPoints)
-//         console.log("You won the game! congratulations!");
+}
 
-//     else
-//         console.log("It's a tie! GG for both");
-// }
 
-// game();
+document.querySelectorAll('.selection').forEach(sel => sel.addEventListener('click', playRound));

@@ -37,7 +37,11 @@ body {
   align-items: center;
   flex-direction: column;
   font-size: 2em;
-  margin-top: 4em;
+}
+
+.comp-choice {
+  margin: 0;
+  font-size: 2em;
 }
 
 .score {
@@ -45,10 +49,13 @@ body {
 }
 
 .selections {
-  cursor: pointer;
   display: flex;
   gap: 5rem;
   text-align: center;
+}
+
+.selection {
+  cursor: pointer;
 }
 
 .emoji {

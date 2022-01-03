@@ -16,6 +16,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- JS -->
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <header class="header-container">
@@ -28,8 +31,10 @@
         <span class="computer-score red">0</span>
       </p>
     </header>
+    <p class="comp-choice">
+      computer chose: <span class="choice emoji"></span>
+    </p>
     <main class="main-content">
-      <p class="comp-choice">computer chose: <span class="choice"></span></p>
       <h2>Choose Your Weapon</h2>
       <div class="selections">
         <div class="selection">
@@ -45,8 +50,8 @@
           <p>Scissors</p>
         </div>
       </div>
+
+      <p class="message"></p>
     </main>
   </body>
-
-  <script src="./script.js"></script>
 </html>
