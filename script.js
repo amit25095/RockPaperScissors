@@ -9,8 +9,8 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerIndex = CHOICES.indexOf(playerSelection[0].toUpperCase() + playerSelection.slice(1))
-    computerIndex = CHOICES.indexOf(computerSelection[0].toUpperCase() + computerSelection.slice(1))
+    playerIndex = CHOICES.indexOf(playerSelection[0].toUpperCase() + playerSelection.slice(1));
+    computerIndex = CHOICES.indexOf(computerSelection[0].toUpperCase() + computerSelection.slice(1));
 
     let winner = TIE;
 
@@ -35,28 +35,28 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
-function game() {
-    let computerPoints = playerPoints = 0;
+// function game() {
+//     let computerPoints = playerPoints = 0;
 
-    for (let i = 0; i < 5; i++) {
-        const playerChoice = prompt("Enter choice (rock, paper, scissors)");
-        const res = playRound(playerChoice, computerPlay());
+//     for (let i = 0; i < 5; i++) {
+//         // const playerChoice = prompt("Enter choice (rock, paper, scissors)");
+//         const res = playRound(playerChoice, computerPlay());
 
-        if (res == COMPUTER_WIN)
-            computerPoints++;
+//         if (res == COMPUTER_WIN)
+//             computerPoints++;
 
-        else if (res == PLAYER_WIN)
-            playerPoints++;
-    }
+//         else if (res == PLAYER_WIN)
+//             playerPoints++;
+//     }
 
-    if (computerPoints > playerPoints)
-        console.log("You lost the game! maybe next time...");
+//     if (computerPoints > playerPoints)
+//         console.log("You lost the game! maybe next time...");
 
-    else if (computerPoints < playerPoints)
-        console.log("You won the game! congratulations!");
+//     else if (computerPoints < playerPoints)
+//         console.log("You won the game! congratulations!");
 
-    else
-        console.log("It's a tie! GG for both");
-}
+//     else
+//         console.log("It's a tie! GG for both");
+// }
 
-game();
+// game();
