@@ -5,8 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="header-container">
+      <h1 class="main-title">
+        <span class="red">Rock</span> <span class="blue">Paper</span>
+        <span class="green">Scissors</span>
+      </h1>
+      <p class="score">
+        Score: <span class="user-score red">0</span> -
+        <span class="computer-score red">0</span>
+      </p>
+    </header>
+    <main class="main-content">
+      <p class="comp-choice">computer chose: <span class="choice"></span></p>
+      <h2>Choose Your Weapon</h2>
+      <div class="selections">
+        <div class="selection">
+          <span class="emoji">👊🏼</span>
+          <p>Rock</p>
+        </div>
+        <div class="selection">
+          <span class="emoji">✋🏼</span>
+          <p>Paper</p>
+        </div>
+        <div class="selection">
+          <span class="emoji">✌🏼</span>
+          <p>Scissors</p>
+        </div>
+      </div>
+    </main>
+  </body>
 
   <script src="./script.js"></script>
 </html>
